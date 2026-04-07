@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Tuba 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: black;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 45px;
+    color: #ff4b7d;
+}
+
+.slideshow img {
+    width: 240px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 0 0 25px pink;
+}
+
+.cake {
+    font-size: 90px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: none;
+    background: #ff4b7d;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 18px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.heart {
+    position: absolute;
+    color: pink;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(25); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday Tuba 🎉</h1>
+
+<div class="slideshow">
+    <img id="slide" src="photo1.jpg">
+</div>
+
+<div class="cake">🎂</div>
+
+<button onclick="startSurprise()">Tap for Magic 💖</button>
+
+<div id="message"></div>
+
+<audio id="music" loop>
+    <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let images = ["photo1.jpg", "photo2.jpg"];
+let i = 0;
+setInterval(() => {
+    i = (i + 1) % images.length;
+    document.getElementById("slide").src = images[i];
+}, 2000);
+
+let text = `💖 I Love you love you Love you Tuba 💖
+
+Mr makdra man huuu hehehe 😏
+
+Happy Birthday to my giraffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee 🦒
+panda 🐼 tota 🦜 gundi 😈 pookie 💕 Gul eram bhature 😋
+
+----------------------------------------
+
+Happy Birthday to my absolute favorite human, Tuba!
+
+It’s rare to find someone who just 'gets' you without a single word being said, but with you, it’s always been effortless. You’ve been my rock, my therapist, my partner-in-crime, and the person who turns even the most ordinary days into core memories.
+
+Looking back at everything we’ve been through, I’m just so grateful that I have you in my corner. You have this incredible way of making the world feel a little brighter and everyone around you feel a little more loved.
+
+On your special day, I want you to know how much I truly appreciate your loyalty, your laughter, and your beautiful soul.
+
+I hope this year brings you as much joy as you’ve given me. May you chase every dream, smash every goal, and stay exactly as wonderful as you are today.
+
+Let’s make this year legendary—love you always, bestie! 💖
+
+Love 💕 you my best friend my everything 😌🔥`;
+
+let index = 0;
+
+function typeWriter() {
+    if (index < text.length) {
+        document.getElementById("message").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 25);
+    }
+}
+
+function fireworks() {
+    for (let i = 0; i < 40; i++) {
+        let f = document.createElement("div");
+        f.className = "firework";
+        f.style.left = Math.random() * window.innerWidth + "px";
+        f.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), 1000);
+    }
+}
+
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 300);
+
+function startSurprise() {
+    typeWriter();
+    fireworks();
+    document.getElementById("music").play();
+}
+</script>
+
+</body>
+</html>
